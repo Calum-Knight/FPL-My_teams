@@ -1,0 +1,49 @@
+body {
+    background: linear-gradient(120deg, #00ff87 1.12%, #7367ff 63.34%, #963cff 82.72%);
+}
+
+.cknavbar {
+    background: #37003C;
+    color: #00ff87;
+}
+
+.active {
+    border-style: double;
+    border-color: #00ff87
+}
+
+.nav-link{color: #00ff87 }
+
+.navbar-brand {color: #7367ff}
+
+.dropdown-menu {
+    background: #37003C;
+}
+.dropdown-item {
+    color: #00ff87
+}
+
+.card{
+    text-align: center;
+    background: #37003C;
+    color: #00ff87
+}
+
+.img-thumbnail{
+    border-width: 5px;
+    border-radius: 10%;
+    border-color: #37003C;
+    padding: 0px;
+    height: 100px;
+    width: 100px;
+}
+
+.progress-bar{
+    background: #00ff87;
+}
+
+h1{
+    color: #37003C;
+    font-size:xx-large;
+    padding-top: 5%;
+}
