@@ -1,29 +1,32 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
+
+teams = [
+    {"team_name": "On Amad One"},
+    {"team_name": "Haa-Haa-Land"}
+]
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "Hello World!"
+    return render_template("index.html", text = "Card to display captain details")
 
-@app.route("/about")
-def about():
+@app.route("/home")
+def home():
+    return render_template("index.html", text = "Card to display captain details")
 
-    firstname = "Calum"
-    lastname = "Knight"
-    location = "home"
+@app.route("/<team_name>")
+def team_data(team_name):
+    canonicalized = team_name.replace(" ", "").lower()
+    for team in teams:
+        search_term = team["team_name"].replace(" ", "").lower()
 
-    return f"Hello, I'm {firstname} {lastname} and I am at {location}"
+        if search_term == canonicalized:
+            return render_template("team_details.html", team_name = team["team_name"])
 
-hello_dict = {"Hello":"World!"}
-@app.route("/jsonified")
-def jsonified():
-    return jsonify(hello_dict)
-    # return hello_dict
+    return jsonify({"error": f"Character with real_name {team_name} not found."}), 404
 
-@app.route("/normal")
-def normal():
-    return hello_dict
+
 
 if __name__ == "__main__":
     app.run(debug=True)
