@@ -1,11 +1,23 @@
 from flask import Flask, jsonify, render_template
+import pymongo
 
+app = Flask(__name__)
+
+#Connect to database
+conn = "mongobd://localhost:27017"
+client = pymongo.MongoClient(conn)
+
+#connect to collection (if using MongoDB)
+db = client.DBNAME
+user_defined_variable = db.COLLECTIONNAME
+
+#teams list will not be needed once connected to DB
 teams = [
     {"team_name": "On Amad One"},
     {"team_name": "Haa-Haa-Land"}
 ]
 
-app = Flask(__name__)
+
 
 @app.route("/")
 def index():
